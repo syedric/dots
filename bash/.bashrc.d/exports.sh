@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 export EDITOR="nvim"
 export HISTIGNORE="&:[ ]*:exit:ls:bg:fg:history:clear"
 export XDG_CONFIG_HOME="$HOME/.config"

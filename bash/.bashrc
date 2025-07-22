@@ -1,4 +1,4 @@
-# ~/.bashrc
+#!/usr/bin/env bash
 
 # Avoid duplicate sourcing
 [[ $- != *i* ]] && return

@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # Sensible Bash - An attempt at saner Bash defaults
 # Maintainer: mrzool <http://mrzool.cc>
 # Repository: https://github.com/mrzool/bash-sensible
