@@ -56,6 +56,7 @@ alias mv='mv -iv'
 alias cp='cp -iv'
 alias ln='ln -iv'
 alias rm='rm -I --preserve-root'
+alias rmd='rm -Irf --preserve-root'
 
 # Parenting changing perms on /
 alias chown='chown --preserve-root'
@@ -70,6 +71,17 @@ alias pg='ping 8.8.8.8'
 alias port="netstat -tulpn | grep"
 alias ports='sudo netstat -tulanp'1 #Open ports
 alias wget=wget --hsts-file="$XDG_DATA_HOME/wget-hsts"
+
+# Volume
+alias vol='wpctl get-volume @DEFAULT_AUDIO_SINK@'
+alias micvol='wpctl get-volume @DEFAULT_AUDIO_SOURCE@'
+alias volstatus='wpctl status | less'
+alias volnow='wpctl status | grep -A3 "Audio/Sink" | grep -E "^\s*🔊|Volume"'
+alias vol50='wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.5'
+alias volup='wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+'
+alias voldown='wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-'
+alias volmute='wpctl set-mute @DEFAULT_AUDIO_SINK@ 1'
+alias volunmute='wpctl set-mute @DEFAULT_AUDIO_SINK@ 0'
 
 # Dotfiles
 alias dot='git --git-dir=$HOME/dotfiles/.git --work-tree=$HOME/dotfiles'
