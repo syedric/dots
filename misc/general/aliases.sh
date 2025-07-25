@@ -1,3 +1,10 @@
+# Detect Shell
+if [[ -n "$ZSH_VERSION" ]]; then
+    SHELL_NAME="zsh"
+elif [[ -n "$BASH_VERSION" ]]; then
+    SHELL_NAME="bash"
+fi
+
 # Clear
 alias c="clear"
 alias cl="clear"
@@ -20,19 +27,19 @@ alias gam="git commit --amend"
 alias gp="git push"
 alias gpo="git push origin"
 alias gl="git pull"
-alias gco="git chechout"
+alias gco="git checkout"
 alias gcb="git checkout -b"
 alias gcm="git checkout main"
 alias gb="git branch"
 alias gba="git branch -a"
 alias gr="git reset"
-alias grh="gir reset --hard"
+alias grh="git reset --hard"
 alias gcl="git clone"
 alias gd="git diff"
 alias gdc="git diff --cached"
 alias gpl="git pull"
 alias gundo="git reset --soft HEAD~1"
-alias glog="git log --online --graph --decorate --all"
+alias glog="git log --oneline --graph --decorate --all"
 alias gclean="git clean -fd"
 
 # Grep
@@ -40,13 +47,19 @@ alias grep="grep -P -i --color=auto"
 
 # History
 alias h="history"
-alias h1="history 10"
-alias h2="history 20"
-alias h3="history 30"
+if [[ "$SHELL_NAME" == "zsh" ]]; then
+    alias h1="history -10"
+    alias h2="history -20"
+    alias h3="history -30"
+else
+    alias h1="history 10"
+    alias h2="history 20"
+    alias h3="history 30"
+fi
 alias hgrep="history | grep"
 
 # List
-alias els="eza -x -icons=always --color=always --hyperlink"
+alias els="eza -x --icons=always --color=always --hyperlink"
 alias ell="eza -lahB --git --icons=always --color=always"
 alias ls="ls --color=auto"
 alias ll="ls -larth --color=auto"
@@ -58,7 +71,7 @@ alias ln='ln -iv'
 alias rm='rm -I --preserve-root'
 alias rmd='rm -Irf --preserve-root'
 
-# Parenting changing perms on /
+# Parent dir protection
 alias chown='chown --preserve-root'
 alias chmod='chmod --preserve-root'
 alias chgrp='chgrp --preserve-root'
@@ -69,8 +82,8 @@ alias flightoff='sudo rfkill unblock all'
 alias snr='sudo service network-manager restart'
 alias pg='ping 8.8.8.8'
 alias port="netstat -tulpn | grep"
-alias ports='sudo netstat -tulanp'1 #Open ports
-alias wget=wget --hsts-file="$XDG_DATA_HOME/wget-hsts"
+alias ports='sudo netstat -tulanp'
+alias wget='wget --hsts-file="$XDG_DATA_HOME/wget-hsts"'
 
 # Volume
 alias vol='wpctl get-volume @DEFAULT_AUDIO_SINK@'
@@ -121,7 +134,6 @@ alias shutdown='sudo shutdown now'
 alias restart='sudo reboot'
 alias suspend='sudo pm-suspend'
 
-
 # Tmux
 alias tm='tmux attach || tmux new'
 alias tmnew='tmux new -s'
@@ -130,3 +142,4 @@ alias tma='tmux attach -t'
 alias tmkill='tmux kill-session -t'
 alias tmkillall='tmux kill-server'
 alias tmrename='tmux rename-session -t'
+
