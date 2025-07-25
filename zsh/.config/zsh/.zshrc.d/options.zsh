@@ -1,47 +1,48 @@
 #!/usr/bin/env zsh
-
-# Interactive Shell Behavior
+#
+# Changing Directories
 setopt AUTO_CD
-setopt CDABLE_VARS
 setopt AUTO_PUSHD
+setopt CDABLE_VARS
 setopt PUSHD_IGNORE_DUPS
 setopt PUSHD_SILENT
-setopt CORRECT
-setopt INTERACTIVE_COMMENTS
 
-# History Behavior
-setopt EXTENDED_HISTORY
-setopt SHARE_HISTORY
+
+# # History Behavior
 setopt APPEND_HISTORY
-setopt HIST_EXPIRE_DUPS_FIRST
+setopt EXTENDED_HISTORY
 setopt HIST_FIND_NO_DUPS
-setopt HIST_SAVE_NO_DUPS
-setopt INC_APPEND_HISTORY
 setopt HIST_IGNORE_DUPS
-setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_IGNORE_SPACE
+setopt HIST_NO_STORE
 setopt HIST_REDUCE_BLANKS
 setopt HIST_VERIFY
+setopt SHARE_HISTORY
 HISTSIZE=10000
 SAVEHIST=10000
+HISTFILE="$HOME/.cache/zsh"
 
-# Globbing & Completion
-setopt EXTENDED_GLOB
-setopt COMPLETE_IN_WORD
-setopt ALWAYS_TO_END
-setopt AUTO_LIST
-setopt MENU_COMPLETE
-
-# Safety & Sanity
+# Input Output
 setopt NO_CLOBBER
-setopt RM_STAR_SILENT
+setopt CORRECT
 setopt NO_FLOW_CONTROL
+setopt INTERACTIVE_COMMENTS
+setopt PRINT_EXIT_VALUE
+setopt NO_RM_STAR_SILENT
+setopt RM_STAR_WAIT
 
-# Scripting & Function Scope
-setopt ERR_EXIT
-setopt LOCAL_OPTIONS
-setopt LOCAL_TRAPS
+# # Globbing
+setopt EXTENDED_GLOB
+setopt GLOB_DOTS
+setopt MARK_DIRS
+setopt NUMERIC_GLOB_SORT
 
-# Misc Recommended Defaults
-unsetopt BEEP
-unsetopt PROMPT_CR
+# Completion
+setopt ALWAYS_TO_END
+setopt COMPLETE_IN_WORD
+setopt LIST_PACKED
+setopt LIST_ROWS_FIRST
+
+# # Misc Recommended Defaults
+# unsetopt BEEP
+# unsetopt PROMPT_CR
