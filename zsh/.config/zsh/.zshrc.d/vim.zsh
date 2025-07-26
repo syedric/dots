@@ -12,56 +12,67 @@ function cursor_mode() {
     function zle-keymap-select {
         if [[ ${KEYMAP} == vicmd ]] || [[ $1 == 'block' ]]; then
             printf "$cursor_block"
-            # RPROMPT="%F{blue}[N]%f"
         elif [[ ${KEYMAP} == viins ]] || [[ ${KEYMAP} == main ]] || [[ -z ${KEYMAP} ]] || [[ $1 == 'beam' ]]; then
             printf "$cursor_beam"
-            # RPROMPT="%F{green}[I]%f"
         fi
-        # zle reset-prompt
     }
     
     function zle-line-init {
         printf "$cursor_beam"
-	# RPROMPT="%F{green}[I]%f"
-	# zle reset-prompt
     }
     
     zle -N zle-keymap-select
-    zle -N zle-line-init
-    
-    # Reset cursor to block on shell exit
-    # TRAPEXIT() {
-    #     echo -ne '\e[2 q'
-    # }
-    
-    # Set initial cursor to beam
-    # echo -ne "$cursor_beam"
+    zle -N zle-line-init    
 }
 cursor_mode
 
 # Sync zsh internal clipboard with system
+autoload -Uz copy-region-as-kill
 copy-to-clipboard() {
-  zle copy-region-as-kill
-  print -rn -- "$CUTBUFFER" | wl-copy
+    if zle copy-region-as-kill; then
+        print -rn -- "$CUTBUFFER" | wl-copy
+    fi
+    zle deactivate-region
 }
 zle -N copy-to-clipboard
 
-# Vim-style navigation in completion menus
+# --- menuselect ---
 zmodload zsh/complist
 bindkey -M menuselect 'h' vi-backward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
 bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
+bindkey -M menuselect ' ' accept-and-menu-complete	# Accept and keep completing
+bindkey -M menuselect '^I' menu-complete		# Tab
+bindkey -M menuselect '^[[Z' reverse-menu-complete	# Shift+Tab
 
-bindkey -M visual 'y' copy-to-clipboard       # Yank
-bindkey -M visual 'd' kill-region             # Delete
-bindkey -M vicmd 'p' vi-put-after             # Paste
+# --- vicmd(normal mode) ---
+bindkey -M vicmd 'u' undo
+bindkey -M vicmd 'U' redo
+bindkey -M vicmd 'W' forward-word
+bindkey -M vicmd 'B' backward-word
+bindkey -M vicmd 'p' vi-put-after             		# Paste
+
+# --- viins(insert mode) ---
 bindkey -M viins '^?' backward-delete-char
 bindkey -M viins '^H' backward-delete-char
+bindkey -M viins '^P' up-line-or-search
+bindkey -M viins '^N' down-line-or-search
+bindkey -M viins '^L' clear-screen
+bindkey -M viins '^A' beginning-of-line
+bindkey -M viins '^E' end-of-line
+bindkey -M viins '^K' kill-line
+bindkey -M viins '^U' backward-kill-line
+bindkey -M viins '^D' delete-char
+bindkey -M viins '^W' backward-kill-word
+bindkey -M viins '^R' history-incremental-search-backward
+bindkey -M viins '^[.' insert-last-word	      		# Alt+. insert last word from previous command
+bindkey -M viins '^[h' backward-word          		# Alt+h
+bindkey -M viins '^[l' forward-word           		# Alt+l
 
-# Use Tab / Shift-Tab in menu
-# bindkey -M menuselect '^I' down-line-or-history     # Tab
-# bindkey -M menuselect '^[[Z' up-line-or-history     # Shift-Tab
+# --- visualmode ---
+bindkey -M visual 'y' copy-to-clipboard			# Yank
+bindkey -M visual 'd' kill-region             		# Delete
 
 # Fallback editor setup
 export VISUAL=${VISUAL:-vim}
