@@ -47,7 +47,8 @@ setopt LIST_ROWS_FIRST
 
 # Misc Recommended Defaults
 setopt NO_BEEP
-unsetopt NO_PROMPT_SP
+setopt NO_PROMPT_SP
+setopt IGNORE_EOF
 
 stty stop undef
 zle_highlight=('paste:none')
