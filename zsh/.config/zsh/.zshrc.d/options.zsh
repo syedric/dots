@@ -1,5 +1,5 @@
 #!/usr/bin/env zsh
-#
+
 # Changing Directories
 setopt AUTO_CD
 setopt AUTO_PUSHD
@@ -20,7 +20,7 @@ setopt HIST_VERIFY
 setopt SHARE_HISTORY
 HISTSIZE=10000
 SAVEHIST=10000
-HISTFILE="$HOME/.cache/zsh"
+HISTFILE="$HOME/.cache/zsh/.zhistory"
 
 # Input Output
 setopt NO_CLOBBER
@@ -36,6 +36,8 @@ setopt EXTENDED_GLOB
 setopt GLOB_DOTS
 setopt MARK_DIRS
 setopt NUMERIC_GLOB_SORT
+setopt NO_CASE_GLOB
+setopt NO_CASE_MATCH
 
 # Completion
 setopt ALWAYS_TO_END
@@ -43,6 +45,11 @@ setopt COMPLETE_IN_WORD
 setopt LIST_PACKED
 setopt LIST_ROWS_FIRST
 
-# # Misc Recommended Defaults
-# unsetopt BEEP
-# unsetopt PROMPT_CR
+# Misc Recommended Defaults
+setopt NO_BEEP
+unsetopt NO_PROMPT_SP
+
+stty stop undef
+zle_highlight=('paste:none')
+
+ZSH_AUTOSUGGEST_STRATEGY=(completion history)
