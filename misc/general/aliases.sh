@@ -84,6 +84,8 @@ alias pg='ping 8.8.8.8'
 alias port="netstat -tulpn | grep"
 alias ports='sudo netstat -tulanp'
 alias wget='wget --hsts-file="$XDG_DATA_HOME/wget-hsts"'
+alias nmsc='nmcli device wifi rescan && nmcli device wifi list'
+alias nmls='nmcli device wifi list'
 
 # Volume
 alias vol='wpctl get-volume @DEFAULT_AUDIO_SINK@'
