@@ -4,6 +4,6 @@
 [[ $- != *i* ]] && return
 
 # Source all files in ~/.bashrc.d
-for file in ~/.bashrc.d/*.sh; do
+for file in ~/bashrc.d/*.sh; do
 	[ -r "$file" ] && source "$file"
 done
