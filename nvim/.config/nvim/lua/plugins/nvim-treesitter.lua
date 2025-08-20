@@ -4,10 +4,11 @@ return {
     event = { "BufReadPost", "BufNewFile" },
     dependencies = {
         "nvim-treesitter/nvim-treesitter-textobjects",
+        "windwp/nvim-ts-autotag"
     },
     main = "nvim-treesitter.configs",
     opts = {
-        ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "markdown", "markdown_inline", "latex", "bash" },
+        ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "markdown", "markdown_inline", "latex", "bash", "regex" },
         sync_install = false,
         auto_install = false,
         highlight = {
