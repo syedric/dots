@@ -1,1 +1,5 @@
 .zcompdump
+autoload/
+undo/
+plugged/
+.netrwhist
