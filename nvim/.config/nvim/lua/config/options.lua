@@ -13,7 +13,8 @@ opt.mouse = "a"
 opt.clipboard = vim.env.SSH_TTY and "" or "unnamedplus"
 opt.history = 1000
 opt.confirm = true
-g.have_nerd_fonts = true
+g.have_nerd_font = true
+g.snacks_animate = true
 
 -- --- File Handling ---
 opt.autoread = true
@@ -37,17 +38,18 @@ opt.ttyfast = true
 opt.termguicolors = true
 opt.linebreak = true
 opt.breakindent = true
+opt.statuscolumn = [[%!v:lua.require'snacks.statuscolumn'.get()]]
 opt.wrap = false
 opt.list = true
-opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
--- opt.cmdheight = 0
+opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
+opt.cmdheight = 0
 opt.fillchars = {
-  foldopen = "",
-  foldclose = "",
-  fold = " ",
-  foldsep = " ",
-  diff = "╱",
-  eob = " ",
+	foldopen = "",
+	foldclose = "",
+	fold = " ",
+	foldsep = " ",
+	diff = "╱",
+	eob = " ",
 }
 
 -- --- Searching ---
