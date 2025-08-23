@@ -145,3 +145,6 @@ alias tmkill='tmux kill-session -t'
 alias tmkillall='tmux kill-server'
 alias tmrename='tmux rename-session -t'
 
+# Editor
+alias v='vim'
+alias vi='nvim'
