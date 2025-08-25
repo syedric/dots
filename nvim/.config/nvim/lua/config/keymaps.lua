@@ -133,3 +133,7 @@ map("n", "-", "<cmd>Oil<CR>", { desc = "Open Oil File Explorer" })
 map("n", "<leader>sf", "<cmd>source %<CR>", { desc = "[S]ource [F]ile" })
 map("n", "<leader>X", ":.lua<CR>", { desc = "Run current line in lua" })
 map("v", "<leader>X", ":lua<CR>", { desc = "Run selected lines" })
+
+vim.keymap.set("n", "[c", function()
+  require("treesitter-context").go_to_context(vim.v.count1)
+end, { silent = true, desc = "Jump to context" })
