@@ -3,7 +3,11 @@
 # Avoid duplicate sourcing
 [[ $- != *i* ]] && return
 
-# Source all files in ~/.bashrc.d
-for file in ~/bashrc.d/*.sh; do
-	[ -r "$file" ] && source "$file"
-done
+source "$HOME/bashrc.d/bprofile"
+source "$HOME/bashrc.d/options"
+source "$HOME/bashrc.d/bash-powerline"
+source "$HOME/bashrc.d/functions"
+source "$HOME/bashrc.d/tools"
+source "$XDG_CONFIG_HOME/misc/lscolors"
+source "$XDG_CONFIG_HOME/misc/aliases"
+

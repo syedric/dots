@@ -1,7 +1,15 @@
-# Detect Shell
-if [[ -n "$ZSH_VERSION" ]]; then
+#!/bin/sh
+
+# Make aliases available only for interactive shells
+case "$-" in
+*i*) ;;  # interactive
+*) return ;;
+esac
+
+# Detect shell
+if [ -n "$ZSH_VERSION" ]; then
     SHELL_NAME="zsh"
-elif [[ -n "$BASH_VERSION" ]]; then
+elif [ -n "$BASH_VERSION" ]; then
     SHELL_NAME="bash"
 fi
 
@@ -12,9 +20,9 @@ alias clr="clear"
 alias cls="clear"
 
 # Change Directories
-alias .="cd .."
-alias ..="cd ../.."
-alias ...="cd ../../.."
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
 
 # Git Commands
 alias gs="git status"
@@ -47,7 +55,7 @@ alias grep="grep -P -i --color=auto"
 
 # History
 alias h="history"
-if [[ "$SHELL_NAME" == "zsh" ]]; then
+if [ "$SHELL_NAME" = "zsh" ]; then
     alias h1="history -10"
     alias h2="history -20"
     alias h3="history -30"
@@ -91,7 +99,7 @@ alias nmls='nmcli device wifi list'
 alias vol='wpctl get-volume @DEFAULT_AUDIO_SINK@'
 alias micvol='wpctl get-volume @DEFAULT_AUDIO_SOURCE@'
 alias volstatus='wpctl status | less'
-alias volnow='wpctl status | grep -A3 "Audio/Sink" | grep -E "^\s*🔊|Volume"'
+alias volnow="wpctl status | grep -A3 \"Audio/Sink\" | grep -E '^[[:space:]]*🔊|Volume'"
 alias vol50='wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.5'
 alias volup='wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+'
 alias voldown='wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-'

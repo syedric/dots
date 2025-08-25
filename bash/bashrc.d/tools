@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+eval "$(zoxide init bash)"
+eval "$(fzf --bash)"
+
+# UV Python
+. "$HOME/.local/share/../bin/env"

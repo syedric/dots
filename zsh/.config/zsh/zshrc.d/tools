@@ -1,0 +1,7 @@
+#!/usr/bin/env zsh
+
+source <(fzf --zsh)
+eval "$(~/.local/bin/mise activate zsh)"
+
+# UV Python
+. "$HOME/.local/share/../bin/env"

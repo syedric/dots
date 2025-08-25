@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+if [ -f "$HOME/bashrc.d/sensible" ]; then
+	source ~/bashrc.d/sensible
+fi

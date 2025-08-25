@@ -1,1 +1,0 @@
-/home/shams/dotfiles/misc/general/aliases.sh
