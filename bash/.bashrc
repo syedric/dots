@@ -11,3 +11,4 @@ source "$HOME/bashrc.d/tools"
 source "$XDG_CONFIG_HOME/misc/lscolors"
 source "$XDG_CONFIG_HOME/misc/aliases"
 
+. "$HOME/.cargo/env"
