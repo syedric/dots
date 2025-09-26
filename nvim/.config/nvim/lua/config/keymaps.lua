@@ -137,3 +137,5 @@ map("v", "<leader>X", ":lua<CR>", { desc = "Run selected lines" })
 vim.keymap.set("n", "[c", function()
   require("treesitter-context").go_to_context(vim.v.count1)
 end, { silent = true, desc = "Jump to context" })
+
+map("n", "<leader>ww", "<cmd>w<cr>", { desc = "Save buffer" })

@@ -99,7 +99,6 @@ alias nmls='nmcli device wifi list'
 alias vol='wpctl get-volume @DEFAULT_AUDIO_SINK@'
 alias micvol='wpctl get-volume @DEFAULT_AUDIO_SOURCE@'
 alias volstatus='wpctl status | less'
-alias volnow="wpctl status | grep -A3 \"Audio/Sink\" | grep -E '^[[:space:]]*🔊|Volume'"
 alias vol50='wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.5'
 alias volup='wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+'
 alias voldown='wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-'
@@ -155,4 +154,5 @@ alias tmrename='tmux rename-session -t'
 
 # Editor
 alias v='vim'
-alias vi='nvim'
+alias vn='~/neovim/nightly/bin/nvim'
+alias vs='~/neovim/stable/bin/nvim'
