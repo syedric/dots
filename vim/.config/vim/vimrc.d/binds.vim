@@ -16,19 +16,15 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
+" --- Better Indent --
+vnoremap > >gv
+vnoremap < <gv
+
 " --- Resize windows using Alt + Arrow keys ---
 nnoremap <A-Up>    :resize +2<CR>
 nnoremap <A-Down>  :resize -2<CR>
 nnoremap <A-Left>  :vertical resize -2<CR>
 nnoremap <A-Right> :vertical resize +2<CR>
-
-" --- Moving lines around ---
-nnoremap <A-j> :m .+1<CR>==
-nnoremap <A-k> :m .-2<CR>==
-inoremap <A-j> <Esc>:m .+1<CR>==gi
-inoremap <A-k> <Esc>:m .-2<CR>==gi
-vnoremap <A-j> :m '>+1<CR>gv=gv
-vnoremap <A-k> :m '<-2<CR>gv=gv
 
 " --- Embedded Terminal ---
 nnoremap <C-_> :terminal<CR>
@@ -55,12 +51,12 @@ vnoremap <C-C> :<C-u>call system('wl-copy', join(getline("'<", "'>"), "\n"))<CR>
 nnoremap <leader>sp :setlocal spell! spelllang=en_us<CR>
 
 " --- Clear HL ---
-nnoremap <leader>H :nohlsearch<CR><Esc>
+nnoremap <leader>H :nohlsearch<CR>
 
 " --- NERDTree ---
-nnoremap <leader>nn :NERDTreeFocus<CR>
-nnoremap <leader>e :NERDTreeToggle<CR>
-nnoremap <leader>E :NERDTreeFind<CR>
+" nnoremap <leader>nn :NERDTreeFocus<CR>
+" nnoremap <leader>e :NERDTreeToggle<CR>
+" nnoremap <leader>E :NERDTreeFind<CR>
 
 " --- GitGutter ---
 nnoremap <leader>ggb :GitGutterBufferToggle<CR>

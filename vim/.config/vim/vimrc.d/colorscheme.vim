@@ -1,4 +1,4 @@
 let g:disable_bg=1
-colorscheme rosepine
+colorscheme rosepine_moon
 
-let g:lightline = { 'colorscheme': 'rosepine' }
+let g:lightline = { 'colorscheme': 'rosepine_moon' }
