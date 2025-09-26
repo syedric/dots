@@ -1,18 +1,18 @@
 return {
-  'nvim-telescope/telescope.nvim',
-  tag = '0.1.8',
-  cmd = 'Telescope',
+  "nvim-telescope/telescope.nvim",
+  tag = "0.1.8",
+  cmd = "Telescope",
   dependencies = {
-    'nvim-lua/plenary.nvim',
+    "nvim-lua/plenary.nvim",
     {
-      'nvim-telescope/telescope-fzf-native.nvim',
-      build = 'make',
+      "nvim-telescope/telescope-fzf-native.nvim",
+      build = "make",
       cond = function()
-        return vim.fn.executable('make') == 1
+        return vim.fn.executable("make") == 1
       end,
     },
-    { 'nvim-telescope/telescope-ui-select.nvim' },
-    { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
+    { "nvim-telescope/telescope-ui-select.nvim" },
+    { "nvim-tree/nvim-web-devicons", enabled = vim.g.have_nerd_font },
   },
   opts = {
     extensions = {
@@ -20,64 +20,65 @@ return {
         fuzzy = true,
         override_generic_sorter = true,
         override_file_sorter = true,
-        case_mode = 'smart_case',
+        case_mode = "smart_case",
       },
-      ['ui-select'] = {
-        require('telescope.themes').get_dropdown(),
+      ["ui-select"] = {
+        require("telescope.themes").get_dropdown(),
       },
     },
   },
   keys = {
-    { '<leader><leader>', require('telescope.builtin').buffers, desc = '[F]ind existing [B]uffers' },
+    { "<leader><leader>", require("telescope.builtin").buffers, desc = "[f]ind existing [b]uffers" },
     {
-      '<leader>/',
+      "<leader>/",
       function()
-        require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown({
+        require("telescope.builtin").current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
           winblend = 10,
           previewer = false,
         }))
       end,
-      desc = '[/] Fuzzily search in current buffer',
+      desc = "[/] fuzzily search in current buffer",
     },
     {
-      '<leader>fb',
+      "<leader>fb",
       function()
-        require('telescope.builtin').find_files({
-          cwd = vim.fn.expand('%:p:h'),
-          prompt_title = 'Files in ' .. vim.fn.expand('%:h'),
+        require("telescope.builtin").find_files({
+          cwd = vim.fn.expand("%:p:h"),
+          hidden = true,
+          prompt_title = "files in " .. vim.fn.expand("%:h"),
         })
       end,
-      desc = '[F]ind files in active [B]uffer location',
+      desc = "[f]ind files in active [b]uffer location",
     },
-    { '<leader>ff', require('telescope.builtin').find_files, desc = '[F]ind [F]iles in cwd' },
-    { '<leader>fh', require('telescope.builtin').help_tags, desc = '[F]ind [F]elp' },
-    { '<leader>rf', require('telescope.builtin').oldfiles, desc = 'Find [R]ecent [F]iles' },
+    { "<leader>ff", require("telescope.builtin").find_files, desc = "[f]ind [f]iles in cwd" },
+    { "<leader>fh", require("telescope.builtin").help_tags, desc = "[f]ind [f]elp" },
+    { "<leader>rf", require("telescope.builtin").oldfiles, desc = "find [r]ecent [f]iles" },
     {
-      '<leader>ec',
+      "<leader>ec",
       function()
-        require('telescope.builtin').find_files({ cwd = vim.fn.stdpath('config') })
+        require("telescope.builtin").find_files({ cwd = vim.fn.stdpath("config") })
       end,
-      desc = 'Open [E]ditor [C]onfig',
-    },
-    {
-      '<leader>ep',
-      function()
-        require('telescope.builtin').find_files({ cwd = vim.fs.joinpath(vim.fn.stdpath('data'), 'lazy') })
-      end,
-      desc = 'Open [E]ditor [P]ackages',
+      desc = "open [e]ditor [c]onfig",
     },
     {
-      '<leader>tb',
+      "<leader>ep",
       function()
-        require('telescope.builtin').builtin()
+        require("telescope.builtin").find_files({ cwd = vim.fs.joinpath(vim.fn.stdpath("data"), "lazy") })
       end,
-      desc = 'View [T]elescope [B]uiltins',
+      desc = "open [e]ditor [p]ackages",
+    },
+    {
+      "<leader>tb",
+      function()
+        require("telescope.builtin").builtin()
+      end,
+      desc = "view [t]elescope [b]uiltins",
     },
   },
   config = function(_, opts)
-    local telescope = require('telescope')
+    local telescope = require("telescope")
     telescope.setup(opts)
-    telescope.load_extension('fzf')
-    telescope.load_extension('ui-select')
+    telescope.load_extension("fzf")
+    telescope.load_extension("ui-select")
   end,
 }

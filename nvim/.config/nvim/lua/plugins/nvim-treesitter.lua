@@ -5,6 +5,7 @@ return {
   dependencies = {
     "windwp/nvim-ts-autotag",
     "nvim-treesitter/nvim-treesitter-context",
+    "nvim-treesitter/nvim-treesitter-textobjects",
   },
   main = "nvim-treesitter.configs",
   opts = {
@@ -23,6 +24,9 @@ return {
       "sql",
       "html",
       "yaml",
+      "go",
+      "javascript",
+      "typescript",
     },
     sync_install = false,
     auto_install = false,
@@ -47,5 +51,27 @@ return {
       },
     },
     indent = { enable = true },
+  },
+  textobjects = {
+    select = {
+      enable = true,
+
+      -- Automatically jump forward to textobj, similar to targets.vim
+      lookahead = true,
+
+      keymaps = {
+        ["af"] = "@function.outer",
+        ["if"] = "@function.inner",
+        ["ac"] = "@class.outer",
+        ["ic"] = { query = "@class.inner", desc = "Select inner part of a class region" },
+        ["as"] = { query = "@local.scope", query_group = "locals", desc = "Select language scope" },
+      },
+      selection_modes = {
+        ["@parameter.outer"] = "v",
+        ["@function.outer"] = "V",
+        ["@class.outer"] = "<c-v>",
+      },
+      include_surrounding_whitespace = true,
+    },
   },
 }

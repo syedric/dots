@@ -126,10 +126,18 @@ return {
           },
         },
         gopls = {},
+        marksman = {},
+        clangd = {
+          filetypes = { "c", "cpp", "objc", "objcpp" },
+          root_dir = require("lspconfig").util.root_pattern("src"),
+          single_file_support = true,
+        },
       }
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
         "stylua",
+        "ruff",
+        "clang-format",
       })
       require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
