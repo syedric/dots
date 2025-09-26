@@ -18,26 +18,25 @@ let g:loaded_rrhelper          = 1
 let g:loaded_2html_plugin      = 1
 let g:loaded_vimball           = 1
 let g:loaded_vimballPlugin     = 1
-" let g:loaded_matchparen        = 1
-let g:loaded_netrw             = 1
-let g:loaded_netrwPlugin       = 1
-let g:loaded_netrwSettings     = 1
-let g:loaded_netrwFileHandlers = 1
+let g:loaded_matchparen        = 1
+" let g:loaded_netrw             = 1
+" let g:loaded_netrwPlugin       = 1
+" let g:loaded_netrwSettings     = 1
+" let g:loaded_netrwFileHandlers = 1
 let g:loaded_tutor_mode_plugin = 1
 let g:loaded_getscript         = 1
 let g:loaded_getscriptPlugin   = 1
 
 call plug#begin()
-Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-vinegar'
+Plug 'sheerun/vim-polyglot'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'preservim/nerdtree'
-Plug 'ryanoasis/vim-devicons'
 Plug 'mbbill/undotree'
 Plug 'itchyny/lightline.vim'
 Plug 'easymotion/vim-easymotion'
@@ -45,6 +44,5 @@ Plug 'airblade/vim-gitgutter'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'wellle/targets.vim'
 Plug 'lervag/vimtex'
-Plug 'lervag/vimtex', { 'tag': 'v2.15' }
 Plug 'rose-pine/vim'
 call plug#end()
